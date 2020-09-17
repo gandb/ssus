@@ -77,7 +77,7 @@ function sendMessage(action)
 		  })
 		  */
 		chrome.runtime.sendMessage( {action, login}, function(response) {
-			console.log(response.farewell);
+		//	console.log(response.farewell);
 		});
 	});
 	 

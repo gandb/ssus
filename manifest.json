@@ -3,7 +3,7 @@
   "version": "2.20",
   "description": "Abre SSUs diretamente pelo ID",
   "background": {
-    "persistent": true,
+    "persistent": false,
     "scripts": ["jquery-1.8.3.min.js","background.js", "ssu.js"]
   },
   "options_page": "options.html",
@@ -16,6 +16,6 @@
      "default_icon": "ico.png",
      "default_title": "Open SSU"
   },
-  "permissions": ["contextMenus", "tabs", "https://sti.uspdigital.usp.br/"],
+  "permissions": ["contextMenus", "tabs",  "https://sti.uspdigital.usp.br/"],
   "manifest_version": 2
 }

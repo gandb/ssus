@@ -48,6 +48,11 @@ if(chrome.runtime.onInstalled)
 	
 	chrome.runtime.onMessage.addListener(
 		function(request, sender, sendResponse) {
+
+			
+		
+
+			
 			sendResponse(toClient(request));
 		}
 	);
@@ -67,15 +72,24 @@ if($("#s4-simple-error-content .ms-ButtonHeightWidth").length == 1)
 function toClient(request)
 {
 
-	alert('chegou');
+	chrome.tabs.executeScript(null, {
+		code: "alert('teste0')"
+	});
+	alert('chegou 100');
 	var txtAndamento = getTxtAndamento();
 	var cmbSituacao = getCmbSituacao();
 	  
-	if(txtAndamento == null || cmbSituacao==null)
+	if(txtAndamento == null)
 	{
-		alert('Página incorreta de SSU!');
+		alert('Página incorreta de SSU! Caixa de andamento não encontrada.');
 		return;
-	}	
+	}
+	else if(cmbSituacao==null)
+	{
+		alert('Página incorreta de SSU! Combo Situação não encontrado.');
+		return;
+	}
+
 	
 	 
 
@@ -152,23 +166,27 @@ function getCmbSituacao()
 
 function getElementFromSSU(type,name)
 {
-	var cmbSituacao = null;
+	const itens = document.getElementsByTagName("TEXTAREA");
+	alert("getElementFromSSU:110="+ itens.length );
+	const first = null;
 	
 	$(".ms-formbody " + type).each(
 		function (index, element)
 		{
 			 
-			if(cmbSituacao != null)
+		   alert("getElementFromSSU:200="+element);
+
+			if(first != null)
 			{
 				return;
 			}
 			
 			if(element.id && element.id.indexOf(name)>0)
 			{
-				cmbSituacao = element;
+				first = element;
 			}		
 		}
 	);
 	
-	return cmbSituacao;
+	return first;
 }
