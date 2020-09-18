@@ -48,11 +48,6 @@ if(chrome.runtime.onInstalled)
 	
 	chrome.runtime.onMessage.addListener(
 		function(request, sender, sendResponse) {
-
-			
-		
-
-			
 			sendResponse(toClient(request));
 		}
 	);
@@ -73,9 +68,13 @@ function toClient(request)
 {
 
 	chrome.tabs.executeScript(null, {
-		code: "alert('teste0')"
+		code: `alert('tab:' + ${request.tabid})`
 	});
-	alert('chegou 100');
+
+	chrome.tabs.executeScript(null, {
+		file: 'inject.js'
+	});
+
 	var txtAndamento = getTxtAndamento();
 	var cmbSituacao = getCmbSituacao();
 	  

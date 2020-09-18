@@ -4,11 +4,11 @@
   "description": "Abre SSUs diretamente pelo ID",
   "background": {
     "persistent": false,
-    "scripts": ["jquery-1.8.3.min.js","background.js", "ssu.js"]
+    "scripts": ["jquery-1.8.3.min.js","background.js", "ssu.js" ]
   },
   "options_page": "options.html",
   "content_scripts": [ {
-    "js": [ "jquery-1.8.3.min.js","background.js" ],
+    "js": [ "jquery-1.8.3.min.js","background.js"],
     "matches": [ "http://*/*", "https://*/*"]
   }],
   "browser_action": {

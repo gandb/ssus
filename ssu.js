@@ -67,18 +67,27 @@ function sendMessage(action)
 		alert('Configure antes a extensão');
 	}
  
+ 
+
 
 	chrome.tabs.query({'active': true}, function(tabs) {
+	
+		
 		const tabid = tabs[0].id;
+
+		alert("tab3:"+tabid);
+		
 
 		/*
 		chrome.tabs.sendMessage(tabid, {action, login}, function(response) {
 			alert('voltou');
 		  })
 		  */
-		chrome.runtime.sendMessage( {action, login}, function(response) {
+		chrome.runtime.sendMessage( {action, login,tabid}, function(response) {
 		//	console.log(response.farewell);
+		alert('voltou');
 		});
+
 	});
 	 
 }
