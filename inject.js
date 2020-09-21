@@ -41,14 +41,4 @@ function checkPage()
         alert('Página incorreta de SSU! Caixa status não encontrada.');
     }
 }
-
-function setTxtAndamento(text)
-{
-    document.txtAndamento.innerHTML = text;
-}
-
-
-function setTxtAndamento2(text)
-{
-    document.txtAndamento.innerHTML = text;
-}
+ 
