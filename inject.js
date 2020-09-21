@@ -27,22 +27,7 @@ for(let index = 0 ; index < selects.length ; index++)
     }
 }
 
-
-
-function checkPage()
-{ 
-
-    if(!document.txtAndamento)
-    {
-        alert('Página incorreta de SSU! Caixa de andamento não encontrada.');
-    }
-
-    if(!document.cmbSituacao)
-    {
-        alert('Página incorreta de SSU! Caixa status não encontrada.');
-    }
-}
-
+ 
 function setTxtAndamento(text)
 {
     document.txtAndamento.innerHTML = text;
