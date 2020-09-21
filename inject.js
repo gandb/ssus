@@ -27,7 +27,7 @@ for(let index = 0 ; index < selects.length ; index++)
     }
 }
 
-
+function novafuncao(){}
 
 function checkPage()
 { 
