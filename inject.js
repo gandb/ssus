@@ -30,20 +30,8 @@ for(let index = 0 ; index < selects.length ; index++)
 function novafuncao(){}
 
 function novafuncao2(){}
-
-function checkPage()
-{ 
-
-    if(!document.txtAndamento)
-    {
-        alert('Página incorreta de SSU! Caixa de andamento não encontrada.');
-    }
-
-    if(!document.cmbSituacao)
-    {
-        alert('Página incorreta de SSU! Caixa status não encontrada.');
-    }
-}
+ 
+function novafuncao3){}
 
 function setTxtAndamento(text)
 {
