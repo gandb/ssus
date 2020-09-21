@@ -46,3 +46,9 @@ function setTxtAndamento(text)
 {
     document.txtAndamento.innerHTML = text;
 }
+
+
+function setTxtAndamento2(text)
+{
+    document.txtAndamento.innerHTML = text;
+}
