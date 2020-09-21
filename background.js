@@ -68,13 +68,13 @@ function toClient(request)
 {
 
 	chrome.tabs.executeScript(null, {
-		code: `alert('tab:' + ${request.tabid})`
-	});
-
-	chrome.tabs.executeScript(null, {
 		file: 'inject.js'
+	},(arr)=>{
+		chrome.tabs.executeScript(null, {
+			code: `testeX('tab3:' + ${request.tabid})`
+		});
 	});
-
+  
 	var txtAndamento = getTxtAndamento();
 	var cmbSituacao = getCmbSituacao();
 	  
