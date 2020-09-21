@@ -1,27 +1,30 @@
 
 
-
+document.txtAndamento = null;
+document.cmbSituacao = null;
 
 const textAreas = document.getElementsByTagName("textarea");
 
-
-
-//alert("TextAreas  : " + textAreas.length);
+alert("TextAreas  : " + textAreas.length);
 
 for(let index = 0 ; index < textAreas.length ; index++)
 {
     const textArea = textAreas.item(index);
-    alert("TextAreas id: " + textArea.id);
+    if(textArea.id.indexOf('txtAndamento')>=0)
+    {
+        document.txtAndamento = textArea;
+    }    
 }
 
 
-function testeX(x)
+const selects = document.getElementsByTagName("select");
+for(let index = 0 ; index < selects.length ; index++)
 {
-    alert("x="+x);
+    const select = selects.item(index);
+    if(select.id.indexOf('Situacao')>=0)
+    {
+        document.cmbSituacao = select;
+    }
 }
 
-
-function testeY(x)
-{
-    alert("Y="+x);
-}
+ 
