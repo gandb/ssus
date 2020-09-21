@@ -131,6 +131,3 @@ function goToSSU(selSSU,type)
 	chrome.tabs.create({url:url});
 }
 
-function teste555()
-{}
-
