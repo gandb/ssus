@@ -42,3 +42,5 @@ function checkPage()
     }
 }
  
+
+function teste3(){}
