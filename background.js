@@ -54,15 +54,11 @@ if(chrome.runtime.onInstalled)
 
 }
 
-
-
-
 if($("#s4-simple-error-content .ms-ButtonHeightWidth").length == 1)
 {
 	$("body").html("<P>Redirencionando...</p>");
 	window.location.replace("https://sti.uspdigital.usp.br/CentrosTI/CETISP/SSU/demandas.aspx");
 }
-
 
 function toClient(request)
 {
@@ -70,82 +66,14 @@ function toClient(request)
 	chrome.tabs.executeScript(null, {
 		file: 'inject.js'
 	},(arr)=>{
-		alert(111);
+	 
 		chrome.tabs.executeScript(null, {
 			code: `checkPage()`
 		});
 		chrome.tabs.executeScript(null, {
-			code: `setTxtAndamento("teste")`
+			code: `setAction("${request.action}","${request.login}")`
 		});
-	});
-  
-	var txtAndamento = getTxtAndamento();
-	var cmbSituacao = getCmbSituacao();
-	  
-	if(txtAndamento == null)
-	{
-		return;
-	}
-	else if(cmbSituacao==null)
-	{
-		return;
-	}
- 
-
-	var txtAndamentoVal = $(txtAndamento).val();
-	txtAndamentoVal = txtAndamentoVal  + "\n\n------------------------\n\n";
-	
-	var now = new Date();
-	var year = now.getUTCFullYear();
-	var month  = now.getUTCMonth() +1 ; 
-	var day   = now.getUTCDate() ;
-	
-	if(request.action=="H")
-	{
-		
-	}
-	else if (request.action=="P")
-	{
-		
-	}
-	
-	var newP = "";
-	var txtAction = "";
-	
-	if (request.action!="A")
-	{
-		//situacao
-		if(request.action=="H")
-		{
-			$(cmbSituacao).val("5");//aguardando validação
-			txtAction = "homologação" ;
-		}
-		else if(request.action=="R")
-		{
-			$(cmbSituacao).val("12");//re análise
-		}
-		else if(request.action=="P")
-		{
-			$(cmbSituacao).val("15");//disponível em produção
-			txtAction = "produção" ;
-		}
-		
-		if(request.action!="R")
-		{
-			newP =  "Disponível para " + txtAction + ".";
-		}
-	}	
-
-	//andamento
-	var newValue =  "";
-	
-	newValue += year + "-" + month + "-" + day + " (" + request.login + ") -  " + newP;
-	
-	txtAndamentoVal = txtAndamentoVal + newValue;
-	
-	$(txtAndamento).val(txtAndamentoVal);	
-		
-	// alert(4);
+	}); 
 	
 	return "OK";
 }

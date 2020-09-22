@@ -1,6 +1,6 @@
 {
   "name": "SSU Utils",
-  "version": "2.20",
+  "version": "2.30",
   "description": "Abre SSUs diretamente pelo ID",
   "background": {
     "persistent": false,

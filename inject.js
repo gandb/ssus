@@ -1,11 +1,8 @@
 
-
 document.txtAndamento = null;
 document.cmbSituacao = null;
 
 const textAreas = document.getElementsByTagName("textarea");
-
-alert("TextAreas  : " + textAreas.length);
 
 for(let index = 0 ; index < textAreas.length ; index++)
 {
@@ -16,7 +13,6 @@ for(let index = 0 ; index < textAreas.length ; index++)
     }    
 }
 
-
 const selects = document.getElementsByTagName("select");
 for(let index = 0 ; index < selects.length ; index++)
 {
@@ -26,8 +22,6 @@ for(let index = 0 ; index < selects.length ; index++)
         document.cmbSituacao = select;
     }
 }
-
-
 
 function checkPage()
 { 
@@ -42,8 +36,58 @@ function checkPage()
         alert('Página incorreta de SSU! Caixa status não encontrada.');
     }
 }
+ 
 
-function setTxtAndamento(text)
+function setAction(action, login)
 {
-    document.txtAndamento.innerHTML = text;
+
+	let txtAndamentoVal = document.txtAndamento.innerHTML ;
+	txtAndamentoVal = txtAndamentoVal  + "\n\n------------------------\n\n";
+	
+	const now = new Date();
+	const year = now.getUTCFullYear();
+	const month  = now.getUTCMonth() +1 ; 
+    const day   = now.getUTCDate() ;
+    let time =  year + "-" + month + "-" + day + " (" + login + ") -  " ;
+    
+    
+	let newParagraph = "";
+    let txtAction = "";
+ 
+	if (action!="A")
+	{
+		//situacao
+		if(action=="H")
+		{
+            setCmbSituacao("5");//aguardando validação
+			txtAction = "homologação" ;
+		}
+		else if(action=="R")
+		{
+			setCmbSituacao("12");//re análise
+		}
+		else if(action=="P")
+		{
+			setCmbSituacao("15");//disponível em produção
+			txtAction = "produção" ;
+        }
+        else if(action=="T")
+		{
+            setCmbSituacao("4");//re análise
+            txtAction = "análise técnica" ;
+		}
+        
+        if(action!="R")
+		{
+			newParagraph =  "Disponível para " + txtAction + ".";		 
+		}
+		 
+    }	
+    
+    document.txtAndamento.innerHTML = txtAndamentoVal + time + newParagraph;
+}
+
+function setCmbSituacao(text)
+{
+    document.cmbSituacao.value = text;
 }

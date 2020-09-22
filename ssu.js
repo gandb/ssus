@@ -28,6 +28,7 @@ function initSSU()
 	$("#toProducao").bind("click",goToProducao);
 	$("#toReanalise").bind("click",goToReanalise);
 	$("#toAssinar").bind("click",goToAssinar);
+	$("#toTests").bind("click",goToTestes);	
 	$(document).keypress(function(e) {
     if(e.which == 13) {
         goToSSU();
@@ -52,6 +53,10 @@ function goToAssinar()
 	 sendMessage("A");
 }
 
+function goToTestes()
+{ 
+	 sendMessage("T");
+}
 
 function goToProducao()
 { 
@@ -66,26 +71,13 @@ function sendMessage(action)
 	{
 		alert('Configure antes a extensão');
 	}
- 
- 
-
 
 	chrome.tabs.query({'active': true}, function(tabs) {
 	
-		
 		const tabid = tabs[0].id;
 
-		alert("tab3:"+tabid);
-		
-
-		/*
-		chrome.tabs.sendMessage(tabid, {action, login}, function(response) {
-			alert('voltou');
-		  })
-		  */
 		chrome.runtime.sendMessage( {action, login,tabid}, function(response) {
 		//	console.log(response.farewell);
-		alert('voltou');
 		});
 
 	});
