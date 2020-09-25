@@ -30,12 +30,13 @@ function initSSU()
 	$("#toAssinar").bind("click",goToAssinar);
 	$("#toTests").bind("click",goToTestes);	
 	$(document).keypress(function(e) {
-    if(e.which == 13) {
-        goToSSU();
-    }
-	 
-});
+		if(e.which == 13) {
+			goToSSU();
+		}
+	});
+	    
 }
+
 
 function goToReanalise()
 {

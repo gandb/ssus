@@ -8,8 +8,8 @@
 // Note: It's OK that this is a global variable (and not in localStorage),
 // because the event page will stay open as long as any screenshot tabs are
 // open.
-
-
+	
+ 
 if(chrome.runtime.onInstalled)
 {
 
@@ -54,11 +54,44 @@ if(chrome.runtime.onInstalled)
 
 }
 
-if($("#s4-simple-error-content .ms-ButtonHeightWidth").length == 1)
+
+
+function autoRedirect()
 {
+	if($("#s4-simple-error-content .ms-ButtonHeightWidth").length != 1)
+	{
+		return;	
+	}
+
 	$("body").html("<P>Redirencionando...</p>");
-	window.location.replace("https://sti.uspdigital.usp.br/CentrosTI/CETISP/SSU/demandas.aspx");
+		window.location.replace("https://sti.uspdigital.usp.br/CentrosTI/CETISP/SSU/demandas.aspx");
 }
+
+function updateWarnings()
+{
+	const menus = document.getElementsByClassName("TopMenu");
+
+	if(menus.length!=1)
+	{
+		return;
+	}
+	
+	const menu = menus.item(0);
+
+	menu.innerHTML=menu.innerHTML + `<P>Isto é um teste </P>`;
+
+}
+
+function init()
+{
+	autoRedirect();
+	updateWarnings();
+}
+
+init();
+
+
+
 
 function toClient(request)
 {
