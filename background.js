@@ -69,7 +69,7 @@ function autoRedirect()
 
 function updateWarnings()
 {
-	const menus = document.getElementsByClassName("TopMenu");
+	const menus = document.getElementsByClassName("HeaderDemanda");
 
 	if(menus.length!=1)
 	{
@@ -78,7 +78,100 @@ function updateWarnings()
 	
 	const menu = menus.item(0);
 
-	menu.innerHTML=menu.innerHTML + `<P>Isto é um teste </P>`;
+	menu.innerHTML=menu.innerHTML + `
+	<STYLE>
+		.warning{
+			background-color:#fff687;
+			padding:2px;
+			color:#333333;
+			font-size:14px;
+			margin-top:5px;
+			margin-bottom:5px;
+			vertical-align:middle;
+			border-style:solid;
+			border-width:1px;
+			border-color:orange;
+		}
+		.warning .simbol {
+			font-size:28px;
+			vertical-align:middle;
+		}
+		.escondido
+		{
+			display:none;
+		}
+	</STYLE>
+	<div class="warning hightpriority escondido">
+		<label class="simbol">&#9888;</label>
+		<LABEL>Atenção! Esta SSU é uma SSU de prioridade zero!</LABEL>
+	</div>
+	<div class="warning dependences escondido">
+		<label class="simbol">&#9888;</label>
+		<LABEL>Atenção! Esta SSU contém dependências!</label>
+	</div>
+	`;
+
+	
+	const inputs = document.getElementsByTagName("INPUT");
+	let txtPrioridade = null;
+	let txtSolicitacoesDependentes = null;
+
+
+	for(let index=0;index< inputs.length ; index++)
+	{
+		const txt = inputs[index];
+
+		if(txt.name.indexOf("txtPrioridade")>=0)
+		{
+			txtPrioridade = txt;
+		}
+		if(txt.name.indexOf("txtSolicitacoesDependentes")>=0)
+		{
+			txtSolicitacoesDependentes = txt;
+		}
+	}
+
+	setInterval(() => {
+		const hightpriority = document.getElementsByClassName("hightpriority")[0];
+		const dependences = document.getElementsByClassName("dependences")[0];
+
+		if(txtPrioridade)
+		{
+			if(txtPrioridade.value == "0")
+			{
+				if(hightpriority.classList.contains("escondido"))
+				{
+					hightpriority.classList.remove("escondido");
+				}
+			}
+			else{
+				if(!hightpriority.classList.contains("escondido"))
+				{
+					hightpriority.classList.add("escondido");
+				}
+			}
+
+		}
+
+		if(txtSolicitacoesDependentes)
+		{
+			if(txtSolicitacoesDependentes.value == "")
+			{				
+				if(!dependences.classList.contains("escondido"))
+				{
+					dependences.classList.add("escondido");
+				}
+			}
+			else{
+				if(dependences.classList.contains("escondido"))
+				{
+					dependences.classList.remove("escondido");
+				}
+			}
+		}
+	}, 1000);
+
+
 
 }
 
