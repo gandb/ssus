@@ -111,8 +111,8 @@ function goToSSU(selSSU,type)
 	else
 	{
 		if(oldChecked)
-		{			
-			url = `https://sti.uspdigital.usp.br/CentrosTI/CETISP/SSU/Forms/WPDisplayDemanda.aspx?List=dbcdd59f%2Da9b1%2D47f5%2D95c8%2D9c81dfcf57c3&ID=736677&Source=https%3A%2F%2Fsti%2Euspdigital%2Eusp%2Ebr%2FCentrosTI%2FCETISP%2FSSU%2FLists%2FDemandasConcluidas%2FAllItems%2Easpx%3FView%3D%257bCD72403C%2DE0E9%2D4582%2DA329%2D013D24954658%257d%26FilterField1%3DIdentity%26FilterValue1%3D${target}%26InitialTabId%3DRibbon%252EListItem%26VisibilityContext%3DWSSTabPersistence&ContentTypeId=0x01003E5DAA29B6A5C34AB9604FD0A9AA5689`;
+		{	
+			url = `https://sti.uspdigital.usp.br/CentrosTI/CETISP/SSU/Lists/DemandasConcluidas/AllItems.aspx?View=%7bCD72403C-E0E9-4582-A329-013D24954658%7d&FilterField1=Identity&FilterValue1=${target}&InitialTabId=Ribbon%2EListItem&VisibilityContext=WSSTabPersistence`;
 		}
 		else
 		{
